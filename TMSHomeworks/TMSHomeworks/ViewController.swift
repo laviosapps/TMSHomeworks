@@ -79,12 +79,14 @@ class ViewController: UIViewController {
         let stringTwo = "ввш"
         
         func stringComparison(str1: String, str2: String) {
-            
-            
-            
-           
+            if str1 > str2 {
+                print("\(str1) больше \(str2)")
+            } else {
+                print("\(str2) больше \(str1)")
+            }
         }
         
+        print(stringComparison(str1: stringOne, str2: stringTwo))
         
         //4. Циклический вызов функций - поломать приложение
         
