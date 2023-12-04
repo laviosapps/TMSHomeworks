@@ -14,50 +14,27 @@ class ViewController: UIViewController {
         
         // 1. Универсальные функции сложения, вычитания, умножения и деления (перегрузка функций)
         
-        func sum(_ a: Double,_ b: Double) -> Double {
-            let sum = a + b
-            return sum
+        func accordAction(_ a: Double,_ b: Double) -> Double {
+            let res = a + b
+            return res
         }
-        func sum(_ a: Int,_ b: Int) -> Int {
-            let sum = a + b
-            return sum
+        func accordAction(_ a: Int,_ b: Int) -> Int {
+            let res = a - b
+            return res
         }
-        func substraction(_ a: Double,_ b: Double) -> Double {
-            let sub = a - b
-            return sub
+        func accordAction(_ a: Double,_ b: Double, c: Double) -> Double {
+            let res = a * b
+            return res
         }
-        func substraction(_ a: Int,_ b: Int) -> Int {
-            let sub = a - b
-            return sub
-        }
-        func multiplication(_ a: Double,_ b: Double) -> Double {
-            let mult = a * b
-            return mult
-        }
-        func multiplication(_ a: Int,_ b: Int) -> Int {
-            let mult = a * b
-            return mult
-        }
-        func division(_ a: Double,_ b: Double) -> Double {
-            let div = a / b
-            return div
-        }
-        func division(_ a: Int,_ b: Int) -> Int {
-            let div = a / b
-            return div
+        func accordAction(_ a: Int,_ b: Int, c: Int) -> Int {
+            let res = a / b
+            return res
         }
         
-        let numbersArray = [4,23.212]
-        
-        var sum = sum(numbersArray[0], numbersArray[1])
-        var sub = substraction(numbersArray[0], numbersArray[1])
-        var mult = multiplication(numbersArray[0], numbersArray[1])
-        var div = division(numbersArray[0], numbersArray[1])
-        
-        print("Сумма чисел \(numbersArray[0]) и \(numbersArray[1]) = ", sum)
-        print("Разница чисел \(numbersArray[0]) и \(numbersArray[1]) = ",sub)
-        print("Произведение чисел \(numbersArray[0]) и \(numbersArray[1]) = ",mult)
-        print("Частное чисел \(numbersArray[0]) и \(numbersArray[1]) = ",div)
+        print("Сумма чисел 4.12 и 6.93 = ", accordAction(4.12, 6.93))
+        print("Разница чисел 9 и 12 = ",accordAction(9, 12))
+        print("Произведение чисел 7.2, 14.09 и 29.34 = ",accordAction(7.2, 14.09, c: 29.34))
+        print("Частное от деления чисел 99, 3 и 11 = ",accordAction(99, 3, c: 11))
         
         //2. Вычислить сумму цифр четырехзначного числа
         
