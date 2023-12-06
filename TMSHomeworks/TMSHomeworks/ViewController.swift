@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  TMSHomeworks
-//
-//  Created by Aliaksandr Liakh on 27.11.2023.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -12,84 +5,83 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 1. Универсальные функции сложения, вычитания, умножения и деления (перегрузка функций)
+        //1.Написать функцию, которая принимает опциональное число и, если оно есть, умножает его на 2
         
-        func accordAction(_ a: Double,_ b: Double) -> Double {
-            let res = a + b
-            return res
-        }
-        func accordAction(_ a: Int,_ b: Int) -> Int {
-            let res = a - b
-            return res
-        }
-        func accordAction(_ a: Double,_ b: Double, c: Double) -> Double {
-            let res = a * b
-            return res
-        }
-        func accordAction(_ a: Int,_ b: Int, c: Int) -> Int {
-            let res = a / b
-            return res
-        }
-        
-        print("Сумма чисел 4.12 и 6.93 = ", accordAction(4.12, 6.93))
-        print("Разница чисел 9 и 12 = ",accordAction(9, 12))
-        print("Произведение чисел 7.2, 14.09 и 29.34 = ",accordAction(7.2, 14.09, c: 29.34))
-        print("Частное от деления чисел 99, 3 и 11 = ",accordAction(99, 3, c: 11))
-        
-        //2. Вычислить сумму цифр четырехзначного числа
-        
-        func digitSum(n : Int) -> Int {
-            var m = n
-            var sum = 0
-            while m > 0 {
-                sum += m % 10
-                m /= 10
-            }
-            return sum
-        }
-        let number = 3424
-        print("Сумма цифр числа \(number) = ", digitSum(n: number))
-        
-        //3. Функция сравнения строк - "авб" больше "ввш"
-        
-        let stringOne = "авб"
-        let stringTwo = "ввш"
-        
-        func stringComparison(str1: String, str2: String) {
-            if str1 > str2 {
-                print("\(str1) больше \(str2)")
+        func optionalNumber(a: Double?){
+            guard var number = a else { return }
+            if let unwrapped = a {
+                number *= 2
+                print(unwrapped)
             } else {
-                print("\(str2) больше \(str1)")
+                print("It's not a number")
+            }
+        }
+        optionalNumber(a: 86743)
+        
+        //2.Использовать force unwrap для извлечения значения из опциональной переменной. Затем добавьте условие, чтобы обработать случай, если значение равно nil.
+        
+        let number: Int? = 434345
+        let unwrappedCaseOne = number!
+        
+        let unwrappedCaseTwo = number ?? 34343
+        
+        
+        //3.Написать функцию, использующую оператор guard для проверки опционального значения. Если значение равно nil, выведите сообщение об ошибке, в противном случае выполните операцию с извлеченным значением. 3-4 примера
+        
+        func guardAnwrapping(something: String?){
+            guard let unwrappedGuard = something else {
+                print("error")
+                return
+            }
+            print(unwrappedGuard)
+        }
+        guardAnwrapping(something: "test")
+        
+        //4.Напишите функцию, которая принимает строку и пытается преобразовать ее в целое число. Если преобразование возможно, верните число, если нет - nil
+        
+        func stringToInt(inboundData: String?) -> Int? {
+            let base = inboundData ?? "error"
+            let intFromString = Int(base) ?? nil
+            guard let result = intFromString else {
+                return nil
+            }
+            return result
+        }
+        print(stringToInt(inboundData: "87654"))
+        
+        //5.Создать перечисление Book. Напишите функцию, которая принимает Book и выводит описание книги
+        
+        enum Book: String {
+            case title = "Small prince"
+            case contents = "Chapter 1, Chapter 2 ... Chapter 10"
+            case mainContent = "A lot of text"
+            case bookEnd = "Thanks for reading"
+            
+            func bookdescription(bookInFunc: Book) {
+                print(bookInFunc.rawValue)
+            }
+            
+        }
+        
+        
+        //6.Создайте перечисление Clothes. Напишите функцию, которая принимает Clothes в качестве параметра и выводит сообщение о выбранной одежде.
+        
+        enum Clothes: String {
+            case pants
+            case hat
+            case throusers
+            case shirt
+            case shose
+            func getClothes(clothes: Clothes){
+                
             }
         }
         
-        print(stringComparison(str1: stringOne, str2: stringTwo))
         
-        //4. Циклический вызов функций - поломать приложение
-        
-//        func brokenFunc(x: Int, y: Int) {
-//            var error = x / y
-//            brokenFunc(x: x, y: y)
-//        }
-//        print(brokenFunc(x: 3, y: 3))
-        
-        //5. Функция возведения в степень с дефолтным параметром
-        
-        let numberToExpon = 4.0
-        let degree = 2
-        
-        func exponentation(number: Double, degree: Int) -> Double {
-            var degreeStep = 2
-            var resultNumber = number
-            while degreeStep <= degree {
-                resultNumber = resultNumber * number
-                degreeStep += 1
-            }
-            return resultNumber
-        }
-        
-        let exponentationResult = exponentation(number: numberToExpon, degree: degree)
-        print("Число \(numberToExpon) возведенное в степень \(degree) = \(exponentationResult) ")
         
     }
 }
+
+
+
+
