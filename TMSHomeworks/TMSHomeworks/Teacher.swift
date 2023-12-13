@@ -11,7 +11,7 @@ class Teacher {
     private var id: Int
     private var firstName: String
     private var lastName: String
-    private var subjectsTaught: [Subject]
+    private var subjectsTaught: [String]
     private var studentsTaught: [Student]
     
     init(id: Int, firstName: String, lastName: String) {
@@ -24,26 +24,24 @@ class Teacher {
     
     // Метод для добавления предмета, который ведет учитель
     
-    func addSubjectTaught(subjectName: Subject) {
+    func addSubjectTaught(subjectName: String) {
         subjectsTaught.append(subjectName)
     }
     
     // Метод для установки оценки ученику по определенному предмету
     
-    func setGrade(for: Student, subject: Subject) {
-        
+    func setGrade(studentName: Student, subjectName: String, grade: String) {
+        studentName.addSubjectAndGrade(subjectName: subjectName, grade: grade)
     }
     
     // Метод для получения информации об учителе и предметах, которые он ведет
     
     func teacherInfoPrint() {
         print("""
-        
-                (ID) (Имя) (Фамилия) (Предмет который ведет) (Студент) (Оценка которую поставил преподаватель)
         ID учителя: \(id)
         Имя учителя: \(firstName) \(lastName)
-        Предмет, который ведет:
-        Студент: , его оценка: 
+        Предмет, который ведет: \(subjectsTaught)
+        Студент: \(studentsTaught).
         """)
     }
 }

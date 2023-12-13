@@ -1,9 +1,3 @@
-//
-//  Student.swift
-//  ClassesAndStruct
-//
-//  Created by berdy on 07.12.23.
-//
 
 import Foundation
 
@@ -24,9 +18,14 @@ class Student {
     }
     
     // Метод для добавления предмета
-    func addSubject(newSubject: Subject) {
-        subjects.append(newSubject)
+    func addSubjectAndGrade(subjectName: String, grade: String) {
+        let subject = Subject(subjectName: subjectName, grade: grade)
+        subjects.append(subject)
     }
+    
+    
+    
+    
     // Метод для установки возраста студента
     
     func addAge(ageSet: Int) {
@@ -50,7 +49,7 @@ class Student {
         ID студента: \(id)
         Имя студента: \(name)
         Фамилия студента: \(lastName)
-        Предмет: , оценка: , поставил:
+        Предмет: \(subjects).
         """)
     }
 }
